@@ -1,4 +1,4 @@
-interface Button {
+export interface Button {
   paint(): void;
 }
 
@@ -18,18 +18,14 @@ abstract class ButtonFactory {
   abstract create(): Button;
 }
 
-class WinButtonFactory extends ButtonFactory {
+export class WinButtonFactory extends ButtonFactory {
   create() {
     return new WinButton();
   }
 }
 
-class MacButtonFactory extends ButtonFactory {
+export class MacButtonFactory extends ButtonFactory {
   create() {
     return new MacButton();
   }
 }
-
-[new WinButtonFactory(), new MacButtonFactory()].forEach(factory =>
-  console.log(factory.create().paint())
-);
