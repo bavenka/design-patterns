@@ -1,4 +1,4 @@
-enum ELEMENT_TYPE {
+export enum ELEMENT_TYPE {
   Button,
   Checkbox
 }
@@ -16,8 +16,8 @@ class Button extends UIElement {}
 
 class Checkbox extends UIElement {}
 
-class GUIFactory {
-  create(type: ELEMENT_TYPE, props: { height: string; width: string }) {
+export abstract class GUIFactory {
+  static create(type: ELEMENT_TYPE, props: { height: string; width: string }) {
     switch (type) {
       case ELEMENT_TYPE.Button:
         return new Button(props.height, props.width);
@@ -28,10 +28,3 @@ class GUIFactory {
     }
   }
 }
-
-const factory = new GUIFactory();
-const button = factory.create(ELEMENT_TYPE.Button, {
-  height: "25px",
-  width: "40px"
-});
-console.log(button.width);
