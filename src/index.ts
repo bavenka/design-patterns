@@ -7,6 +7,7 @@ import {
 import { createButton } from "./design-patterns/creational/factory-object-creation";
 
 import { Button as Singleton } from "./design-patterns/creational/singleton";
+import { ButtonBuilder } from "./design-patterns/creational/builder";
 
 import {
   LoadingButton,
@@ -38,3 +39,12 @@ console.log(factory.createCheckbox().paint());
 ]
   .map(prototype => prototype.clone())
   .forEach(clone => console.log(clone));
+
+const builder = new ButtonBuilder();
+console.log(
+  builder
+    .setHeigth(3)
+    .setWidth(4)
+    .setTitle("Lol")
+    .getResult()
+);
